@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CarsNOwners.Presentation.Models.CarViewModel>
+@{
+    ViewBag.Title = "OwnerCars";
+}
+
+<h2>OwnerCars</h2>
+
+<table class="table table-striped" id="car-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfAuto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfIssue)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="editable-car-rows">
+                <td class="carId" hidden>@item.Id</td>
+                <td class="model" >@item.Model</td>
+                <td class="brand" >@item.Brand</td>
+                <td class="typeOfAuto" >@item.TypeOfAuto</td>
+                <td class="price" >@item.Price</td>
+                <td class="yearOfIssue" >@item.YearOfIssue</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm delete-car-from-owner">
+                        <span class="glyphicon glyphicon-remove"></span> Delete Car From Owner
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@Html.Action("CarsNotBelongToOwner")

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CarsNOwners.Presentation.Models.CarViewModel>
+
+    @{
+        ViewBag.Title = "All Cars";
+    }
+
+    <h2>All Cars</h2>
+
+<table class="table table-striped" id="car-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfAuto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfIssue)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="editable-car-rows">
+                <td class="carId" hidden>@item.Id</td>
+                <td class="model" contenteditable>@item.Model</td>
+                <td class="brand" contenteditable>@item.Brand</td>
+                <td class="typeOfAuto" contenteditable>@item.TypeOfAuto</td>
+                <td class="price" contenteditable>@item.Price</td>
+                <td class="yearOfIssue" contenteditable>@item.YearOfIssue</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm update-car disabled">
+                        <span class="glyphicon glyphicon-refresh"></span> Save change
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm delete-car">
+                        <span class="glyphicon glyphicon-remove"></span> Remove
+                    </button>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <input id="model" name="model" type="text" class="form-control" placeholder="Model">
+            </td>
+            <td>
+                <input id="brand" name="brand" type="text" class="form-control" placeholder="Brand">
+            </td>
+            <td>
+                <select id="typeOfAuto" class="form-control" >
+                    <option>car</option>
+                    <option>truck</option>
+                </select>
+            </td>
+            <td>
+                <input id="price" name="price" type="text" class="form-control" placeholder="Price">
+            </td>
+            <td>
+                <input id="yearOfIssue" name="yearOfIssue" type="text" class="form-control" placeholder="Year Of Issue">
+            </td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm" id="add-car">
+                    <span class="glyphicon glyphicon-ok"></span> Add
+                </button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
